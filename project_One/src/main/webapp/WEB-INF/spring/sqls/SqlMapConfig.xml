@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.hk.one.dto.BoardDto" alias="board"/>
+		<typeAlias type="com.hk.one.dto.CategoryDto" alias="category"/>
+		<typeAlias type="com.hk.one.dto.MemberDto" alias="member"/>
+		<typeAlias type="com.hk.one.dto.ProductDto" alias="product"/>
+		<typeAlias type="com.hk.one.dto.CommentDto" alias="comment"/>
+		<typeAlias type="com.hk.one.dto.OrderListDto" alias="orderList"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="/com/sqlMap/mapper/Board.xml"/>
+		<mapper resource="/com/sqlMap/mapper/Category.xml"/>
+		<mapper resource="/com/sqlMap/mapper/Member.xml"/>
+		<mapper resource="/com/sqlMap/mapper/Product.xml"/>
+		<mapper resource="/com/sqlMap/mapper/Comment.xml"/>
+		<mapper resource="/com/sqlMap/mapper/OrderList.xml"/>
+	</mappers>
+</configuration>
+

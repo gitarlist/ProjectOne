@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Category">
+   <select id="getCount" resultType="int">
+      SELECT count(*) 
+      FROM LJP_CATEGORY
+   </select>
+
+   <resultMap id="resultGetList" type="category">
+      <result property="cat_seq" column="CAT_SEQ" />
+      <result property="cat_name" column="CAT_NAME" />
+      <result property="mem_id" column="MEM_ID" />
+      <result property="cat_isdel" column="CAT_ISDEL" />
+   </resultMap>
+   
+   <select id="selectList" parameterType="String" resultMap="resultGetList">
+      SELECT CAT_SEQ, CAT_NAME, MEM_ID, CAT_ISDEL
+      FROM LJP_CATEGORY
+      WHERE MEM_ID = #{mem_id} AND CAT_ISDEL = 0
+      ORDER BY CAT_SEQ ASC
+   </select>
+	
+	<insert id="addCategory" parameterType="Map">
+		INSERT INTO LJP_CATEGORY VALUES (LJP_CATEGORY_SEQ.NEXTVAL, #{cat_name}, #{mem_id}, 0)
+	</insert>
+	
+	<update id="delCategory" parameterType="int">
+		UPDATE LJP_CATEGORY SET CAT_ISDEL = 1 WHERE CAT_SEQ = #{seq}
+	</update>
+</mapper>
